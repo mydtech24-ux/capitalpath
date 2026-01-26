@@ -43,6 +43,7 @@
       font-weight: bold;
       cursor: pointer;
       border-radius: 4px;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -53,31 +54,39 @@
   <h1>Build Real Business Systems.</h1>
   <p>Structured business frameworks for aspiring entrepreneurs who want sustainable income — not hype.</p>
 
-  <!-- Formspree form with JS redirect -->
-<form id="signup-form">
-  <input type="email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Get the Free Starter Guide</button>
-</form>
+  <!-- Form san Formspree -->
+  <form id="signup-form">
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Get the Free Starter Guide</button>
+  </form>
 
+  <!-- Stripe Payment Button -->
+  <button id="stripe-button">Pay $49 to Unlock Full Access</button>
+
+</header>
+
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-const form = document.getElementById('signup-form');
-form.addEventListener('submit', async function(e) {
-  e.preventDefault(); // anpeche paj thank-you default Formspree la
-  const data = new FormData(form);
+  const form = document.getElementById('signup-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
 
-  // Voye fòm nan via fetch
-  await fetch("https://formspree.io/f/mwvvvlbl", {
-    method: "POST",
-    body: data,
-    headers: { 'Accept': 'application/json' }
+    const email = document.getElementById('email').value;
+    if(email){
+      // Ou ka voye email via JS / API pita si w vle
+      console.log("Email collected:", email);
+      // Redirect sou welcome.html
+      window.location.href = "welcome.html";
+    }
   });
 
-  // Redirect sou welcome.html apre submit
-  window.location.href = "welcome.html";
-});
+  // Stripe button
+  const stripeButton = document.getElementById('stripe-button');
+  stripeButton.addEventListener('click', function() {
+    // Mete link pou Stripe Checkout ou isit la
+    window.location.href = "https://buy.stripe.com/test_XYZ"; 
+  });
 </script>
 
 </body>
 </html>
-
-
