@@ -59,15 +59,26 @@
     <button type="submit">Get the Free Starter Guide</button>
   </form>
 
+  <!-- Stripe Payment Button -->
+  <button id="stripe-button">Pay $49 to Unlock Full Access</button>
+
 </header>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-  // Redirect to welcome.html even on Formspree free plan
+  // Form submit redirect
   const form = document.getElementById('signup-form');
   form.addEventListener('submit', function() {
     setTimeout(() => {
       window.location.href = "welcome.html";
-    }, 1000); // 1 segonn apre submit
+    }, 1000);
+  });
+
+  // Stripe button
+  const stripeButton = document.getElementById('stripe-button');
+  stripeButton.addEventListener('click', function() {
+    // Mete link pou Stripe Checkout ou isit la
+    window.location.href = "https://buy.stripe.com/test_XYZ"; 
   });
 </script>
 
