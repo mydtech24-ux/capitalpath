@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CapitalPath – Build Real Business Systems</title>
-  <meta name="description" content="Practical business systems and money frameworks for aspiring entrepreneurs. No hype. Just execution.">
+  <meta name="description" content="Structured business frameworks and guides for aspiring entrepreneurs. Build real systems, make real money.">
   <style>
     body {
       margin: 0;
@@ -29,37 +29,6 @@
       margin: 0 auto 30px;
       color: #cbd5e1;
     }
-    .cta {
-      background: #2563eb;
-      color: #fff;
-      padding: 14px 28px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 4px;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-    footer {
-      background: #020617;
-      color: #94a3b8;
-      text-align: center;
-      padding: 30px 15px;
-      font-size: 0.9rem;
-    }
     input[type="email"] {
       padding: 12px;
       width: 260px;
@@ -73,6 +42,7 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -81,54 +51,25 @@
 
 <header>
   <h1>Build Real Business Systems.</h1>
-  <p>
-    CapitalPath provides structured, execution-focused business frameworks
-    for aspiring entrepreneurs who want sustainable income — not hype.
-  </p>
-<form action="https://formspree.io/f/mwvvvlbl" method="POST">
-  <input type="hidden" name="_redirect" value="https://mydtech24-ux.github.io/capitalpath/welcome.html">
+  <p>Structured business frameworks for aspiring entrepreneurs who want sustainable income — not hype.</p>
 
-  <input type="email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Get the Free Starter Guide</button>
-</form>
+  <!-- Formspree form with JS redirect -->
+  <form id="signup-form" action="https://formspree.io/f/mwvvvlbl" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Get the Free Starter Guide</button>
+  </form>
 
 </header>
 
-<section>
-  <div class="grid">
-    <div class="card">
-      <h3>Structured Frameworks</h3>
-      <p>No guesswork. Clear business models, validated paths, and repeatable systems.</p>
-    </div>
-    <div class="card">
-      <h3>Execution First</h3>
-      <p>We focus on actions that produce measurable results — not motivation.</p>
-    </div>
-    <div class="card">
-      <h3>Real Monetization</h3>
-      <p>Learn how to generate income using digital products, tools, and systems.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Who CapitalPath Is For</h2>
-  <p>
-    Professionals, freelancers, and beginners who want to transition
-    from ideas to real business execution.
-  </p>
-</section>
-
-<footer>
-  © 2026 CapitalPath. All rights reserved.
-</footer>
+<script>
+  // Redirect to welcome.html even on Formspree free plan
+  const form = document.getElementById('signup-form');
+  form.addEventListener('submit', function() {
+    setTimeout(() => {
+      window.location.href = "welcome.html";
+    }, 1000); // 1 segonn apre submit
+  });
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
