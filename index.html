@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CapitalPath – Build Real Digital Products</title>
 <meta name="description" content="Learn to build and sell digital products, partner with affiliates, and grow real income.">
@@ -15,7 +15,8 @@
   section { padding:60px 20px; max-width:1000px; margin:auto; }
   .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
   .card { background:#fff; padding:30px; border-radius:6px; box-shadow:0 10px 25px rgba(0,0,0,0.05); text-align:center; }
-  .affiliate { margin-top:20px; text-align:center; }
+  .affiliate { margin-top:40px; text-align:center; }
+  .affiliate button { background:#16a34a; }
 </style>
 </head>
 <body>
@@ -58,22 +59,17 @@
     const email = document.getElementById('email').value;
     if(email){
       console.log("Email collected:", email);
-      window.location.href = "welcome.html";
-      window.location.href = "VOTRE_STRIPE_LINK_ISTE";
-
+      window.location.href = "welcome.html"; // redirect to welcome page
     }
   });
 
-  // Stripe Checkout
-const stripeButton = document.getElementById('stripe-button');
-stripeButton.addEventListener('click', function(){
-  // Mete link reyèl Stripe Payment ou a isit la
-  window.location.href = "https://buy.stripe.com/test_XYZ"; 
-});
-
+  // Stripe Checkout button
+  const stripeButton = document.getElementById('stripe-button');
+  stripeButton.addEventListener('click', function(){
+    // Ranplase sa a ak link Stripe ou kreye a
+    window.location.href = "VOTRE_STRIPE_PAYMENT_LINK_REYEL";
+  });
 </script>
 
 </body>
 </html>
-
-
