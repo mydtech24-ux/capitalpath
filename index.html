@@ -1,159 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CapitalPath – Member Access</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>CapitalPath Members</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       margin: 0;
-      padding: 0;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
       text-align: center;
     }
 
-    .box {
-      background: #ffffff;
-      max-width: 400px;
-      margin: 80px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    h1 {
+      margin-bottom: 10px;
     }
 
-    h1, h2, h3 {
-      margin-bottom: 15px;
+    p {
+      color: #555;
+      margin-bottom: 20px;
     }
 
     input {
-      width: 90%;
+      width: 100%;
       padding: 12px;
-      margin: 10px 0;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
       font-size: 16px;
     }
 
     button {
-      width: 95%;
+      width: 100%;
       padding: 12px;
       margin-top: 10px;
-      background: #000;
-      color: #fff;
       border: none;
       border-radius: 6px;
-      cursor: pointer;
       font-size: 16px;
+      cursor: pointer;
+      background: black;
+      color: white;
     }
 
-    button.logout {
-      background: #c0392b;
-      margin-top: 30px;
+    button:hover {
+      opacity: 0.9;
     }
 
-    #protected-content {
-      display: none;
-      max-width: 800px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-    }
-
-    .product {
-      border: 1px solid #eee;
-      padding: 20px;
-      margin: 30px 0;
-      border-radius: 8px;
-    }
-
-    .product a {
-      display: inline-block;
+    .error {
+      color: red;
       margin-top: 15px;
-      padding: 12px 24px;
-      background: #ff9900;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    .disclosure {
-      font-size: 12px;
-      color: #666;
-      margin-top: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- AUTH BOX -->
-  <div class="box" id="auth-box">
-    <h2>CapitalPath Members</h2>
+  <div class="card">
+    <h1>CapitalPath Members</h1>
     <p>Login or create an account to access all resources.</p>
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
+    <input type="email" id="email" placeholder="Email address" />
+    <input type="password" id="password" placeholder="Password (min 6 characters)" />
 
     <button onclick="login()">Login</button>
     <button onclick="register()">Create Account</button>
 
-    <p id="auth-error" style="color:red;"></p>
+    <div id="error" class="error"></div>
   </div>
 
-  <!-- PROTECTED CONTENT -->
-  <div id="protected-content">
-    <h1>Welcome to CapitalPath</h1>
-    <p>Exclusive resources and recommended tools</p>
-
-    <!-- PRODUCT 1 -->
-    <div class="product">
-      <h3>Start With Why – 15th Anniversary Edition</h3>
-      <a href="https://amzn.to/4bqePay" target="_blank" rel="nofollow sponsored">
-        View on Amazon
-      </a>
-      <p class="disclosure">
-        Disclosure: This page contains affiliate links. We may earn a commission at no extra cost to you.
-      </p>
-    </div>
-
-    <!-- PRODUCT 2 -->
-    <div class="product">
-      <h3>Laptop Stand for Productivity</h3>
-      <a href="https://amzn.to/46sS6XV" target="_blank" rel="nofollow sponsored">
-        View on Amazon
-      </a>
-      <p class="disclosure">
-        Disclosure: This page contains affiliate links. We may earn a commission at no extra cost to you.
-      </p>
-    </div>
-
-    <!-- PRODUCT 3 -->
-    <div class="product">
-      <h3>Anker Prime USB-C Cable</h3>
-      <a href="https://amzn.to/46qDF6E" target="_blank" rel="nofollow sponsored">
-        View on Amazon
-      </a>
-      <p class="disclosure">
-        Disclosure: This page contains affiliate links. We may earn a commission at no extra cost to you.
-      </p>
-    </div>
-
-    <button class="logout" onclick="logout()">Logout</button>
-  </div>
-
-  <!-- FIREBASE -->
+  <!-- 🔥 FIREBASE -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      signOut,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
@@ -167,44 +100,48 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    window.login = function () {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .catch(err => {
-          document.getElementById("auth-error").innerText = err.message;
-        });
-    };
+    const errorBox = document.getElementById("error");
 
     window.register = function () {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      errorBox.textContent = "";
+
+      if (!email || !password) {
+        errorBox.textContent = "Please enter email and password.";
+        return;
+      }
 
       createUserWithEmailAndPassword(auth, email, password)
-        .catch(err => {
-          document.getElementById("auth-error").innerText = err.message;
+        .then(() => {
+          alert("Account created successfully!");
+        })
+        .catch((error) => {
+          errorBox.textContent = error.message;
         });
-      console.log(email, password);
-
-    };
-    
-
-    window.logout = function () {
-      signOut(auth);
     };
 
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        document.getElementById("auth-box").style.display = "none";
-        document.getElementById("protected-content").style.display = "block";
-      } else {
-        document.getElementById("auth-box").style.display = "block";
-        document.getElementById("protected-content").style.display = "none";
+    window.login = function () {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      errorBox.textContent = "";
+
+      if (!email || !password) {
+        errorBox.textContent = "Please enter email and password.";
+        return;
       }
-    });
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Login successful!");
+        })
+        .catch((error) => {
+          errorBox.textContent = error.message;
+        });
+    };
   </script>
 
 </body>
 </html>
-
