@@ -1,182 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>CapitalPath</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+}
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+/* SECTION PRODUITS */
+.products {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 60px 20px;
+  flex-wrap: wrap;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-    }
+/* CARD PRODUIT */
+.product-card {
+  background: #ffffff;
+  width: 300px;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
 
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      padding: 40px 20px;
-    }
+/* IMAGE PRODUIT */
+.product-card img {
+  max-width: 100%;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
 
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+/* TITRE */
+.product-card h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #000;
+}
 
-    p {
-      text-align: center;
-      opacity: 0.9;
-    }
+/* BOUTON AMAZON */
+.product-card a {
+  display: inline-block;
+  background: #ff9900;
+  color: #000;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
 
-    /* CARD */
-    .card {
-      background: #ffffff;
-      color: #333;
-      border-radius: 14px;
-      padding: 30px;
-      max-width: 420px;
-      margin: 40px auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
+.product-card a:hover {
+  background: #e68a00;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #000;
-      color: #fff;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    /* PRODUCTS */
-    .products {
-      margin-top: 70px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .product {
-      background: #fff;
-      color: #000;
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
-
-    .product img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-
-    .product a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 20px;
-      background: #ff9900;
-      color: #000;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
-    .product a:hover {
-      background: #e68a00;
-    }
-
-    .disclosure {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 13px;
-      opacity: 0.85;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-
-    <h1>CapitalPath</h1>
-    <p>Smart tools & resources to build your future</p>
-
-    <!-- LOGIN / REGISTER -->
-    <div class="card">
-      <h2>Members Area</h2>
-      <p>Login or create an account</p>
-
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password (min 6)">
-
-      <button>Login</button>
-      <button>Create Account</button>
-    </div>
-
-    <!-- PRODUCTS -->
-    <div class="products">
-      <h2>Recommended Products</h2>
-
-      <div class="product-grid">
-
-        <!-- PRODUCT 1 -->
-        <div class="product">
-          <img src="https://m.media-amazon.com/images/I/71tbalAHYCL._AC_SL1500_.jpg">
-          <h3>Start With Why (Paperback)</h3>
-          <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
-        </div>
-
-        <!-- PRODUCT 2 -->
-        <div class="product">
-          <img src="https://m.media-amazon.com/images/I/61rR0E9X6OL._AC_SL1500_.jpg">
-          <h3>Laptop Stand Adjustable</h3>
-          <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
-        </div>
-
-        <!-- PRODUCT 3 -->
-        <div class="product">
-          <img src="https://m.media-amazon.com/images/I/61aM6n6ZKPL._AC_SL1500_.jpg">
-          <h3>Anker Prime USB-C Cable</h3>
-          <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DISCLOSURE -->
-    <div class="disclosure">
-      Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
-    </div>
-
-  </div>
-</body>
-</html>
+/* DISCLOSURE */
+.disclosure {
+  text-align: center;
+  color: #e5e5e5;
+  padding: 20px;
+  font-size: 14px;
+}
+</style>
