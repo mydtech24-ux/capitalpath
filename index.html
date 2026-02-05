@@ -6,36 +6,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   min-height: 100vh;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
 }
 
 .container {
-  max-width: 420px;
-  margin: 60px auto;
   background: #fff;
+  width: 100%;
+  max-width: 420px;
   padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.3);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-p {
+p.subtitle {
   text-align: center;
+  margin-bottom: 20px;
   color: #555;
 }
 
 input {
   width: 100%;
   padding: 14px;
-  margin-top: 12px;
+  margin-bottom: 12px;
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 15px;
@@ -44,112 +50,116 @@ input {
 button {
   width: 100%;
   padding: 14px;
-  margin-top: 15px;
-  border-radius: 10px;
   border: none;
-  background: #000;
-  color: #fff;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
-button:hover {
+.btn-dark {
+  background: #000;
+  color: #fff;
+}
+
+.btn-dark:hover {
   background: #222;
 }
 
-.message {
-  text-align: center;
-  margin-top: 15px;
+.error {
   color: red;
+  text-align: center;
+  margin-top: 10px;
 }
 
-/* PRODUCTS */
-#products {
+.products {
   display: none;
-  padding: 50px 20px;
+  text-align: center;
 }
 
-.products-grid {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .card {
   background: #fff;
-  width: 300px;
-  padding: 25px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.2);
 }
 
 .card img {
-  width: 100%;
+  max-width: 100%;
   height: 220px;
   object-fit: contain;
 }
 
 .card h3 {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .card a {
   display: inline-block;
-  padding: 14px 22px;
-  background: #ff9900;
+  padding: 12px 18px;
+  background: orange;
   color: #000;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: bold;
 }
 
 .disclosure {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #ddd;
   text-align: center;
-  color: #eee;
-  margin-top: 40px;
-  font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN / REGISTER -->
 <div class="container" id="authBox">
   <h1>CapitalPath Members</h1>
-  <p>Login or create an account</p>
+  <p class="subtitle">Login or create an account</p>
 
-  <input id="email" type="email" placeholder="Email">
+  <!-- EXTRA FIELDS -->
+  <input id="firstName" placeholder="First name">
+  <input id="lastName" placeholder="Last name">
+  <input id="phone" placeholder="Phone number">
+  <input id="address" placeholder="Address">
+  <input id="state" placeholder="State">
+
+  <input id="email" placeholder="Email">
   <input id="password" type="password" placeholder="Password (min 6)">
 
-  <button onclick="login()">Login</button>
-  <button onclick="register()">Create Account</button>
+  <button class="btn-dark" onclick="login()">Login</button>
+  <button class="btn-dark" onclick="register()">Create Account</button>
 
-  <div class="message" id="msg"></div>
+  <div class="error" id="msg"></div>
 </div>
 
 <!-- PRODUCTS -->
-<div id="products">
-  <h1 style="color:#fff;text-align:center;">Recommended Products</h1>
-
-  <div class="products-grid">
+<div class="products" id="products">
+  <div class="product-grid">
 
     <div class="card">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/81gepf1eMqL.jpg">
-      <h3>Start With Why</h3>
+      <img src="https://m.media-amazon.com/images/I/71+0RZsb0JL.jpg">
+      <h3>Start With Why (Paperback)</h3>
       <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
     </div>
 
     <div class="card">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/61ZB5L1zPZL._AC_SL1500_.jpg">
+      <img src="https://m.media-amazon.com/images/I/61sH0kq4j-L._AC_SL1500_.jpg">
       <h3>Laptop Stand Adjustable</h3>
       <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
     </div>
 
     <div class="card">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/71fZK9FhZ-L._AC_SL1500_.jpg">
+      <img src="https://m.media-amazon.com/images/I/71eZ9H6Yf-L._AC_SL1500_.jpg">
       <h3>Anker Prime USB-C Cable</h3>
       <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
     </div>
@@ -170,27 +180,34 @@ const firebaseConfig = {
   apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
   authDomain: "capitalpath-cf220.firebaseapp.com",
   projectId: "capitalpath-cf220",
-  appId: "1:950285442316:web:9067c4017ed25370683d29"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 window.login = () => {
-  signInWithEmailAndPassword(auth,email.value,password.value)
-  .then(showProducts)
-  .catch(e => msg.innerText = e.message);
+  const email = emailInput.value;
+  const password = passwordInput.value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(showProducts)
+    .catch(e => msg.innerText = e.message);
 };
 
 window.register = () => {
-  createUserWithEmailAndPassword(auth,email.value,password.value)
-  .then(showProducts)
-  .catch(e => msg.innerText = e.message);
+  if (!firstName.value || !lastName.value || !phone.value || !address.value || !state.value || !email.value || !password.value) {
+    msg.innerText = "Please fill all fields.";
+    return;
+  }
+
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then(showProducts)
+    .catch(e => msg.innerText = e.message);
 };
 
-function showProducts(){
-  document.getElementById("authBox").style.display="none";
-  document.getElementById("products").style.display="block";
+function showProducts() {
+  authBox.style.display = "none";
+  products.style.display = "block";
 }
 </script>
 
