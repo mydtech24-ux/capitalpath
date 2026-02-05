@@ -1,28 +1,108 @@
-<div class="products">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CapitalPath Members</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PRODUIT 1 -->
-  <div class="product-card">
-    <img src="https://images-na.ssl-images-amazon.com/images/I/81gepf1eMqL.jpg" alt="Book">
-    <h3>Start With Why (Paperback)</h3>
-    <a href="https://amzn.to/XXXXX" target="_blank">View on Amazon</a>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-top: 40px;
+    }
+
+    .products {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      background: #ffffff;
+      width: 300px;
+      border-radius: 22px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .product-card h3 {
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .product-card a {
+      display: inline-block;
+      background: #ff9900;
+      color: #000;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .product-card a:hover {
+      background: #e68a00;
+    }
+
+    .disclosure {
+      text-align: center;
+      color: #e5e5e5;
+      padding: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>CapitalPath Recommended Products</h1>
+
+  <div class="products">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/81gepf1eMqL.jpg" alt="Start With Why">
+      <h3>Start With Why (Paperback)</h3>
+      <a href="https://amzn.to/XXXXXXXX" target="_blank">View on Amazon</a>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/61ZB5L1zPZL._AC_SL1500_.jpg" alt="Laptop Stand">
+      <h3>Laptop Stand Adjustable</h3>
+      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/71fZK9FhZ-L._AC_SL1500_.jpg" alt="Anker USB C Cable">
+      <h3>Anker Prime USB-C Cable</h3>
+      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+    </div>
+
   </div>
 
-  <!-- PRODUIT 2 -->
-  <div class="product-card">
-    <img src="https://images-na.ssl-images-amazon.com/images/I/61ZB5L1zPZL._AC_SL1500_.jpg" alt="Laptop Stand">
-    <h3>Laptop Stand Adjustable</h3>
-    <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+  <div class="disclosure">
+    Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
   </div>
 
-  <!-- PRODUIT 3 -->
-  <div class="product-card">
-    <img src="https://images-na.ssl-images-amazon.com/images/I/71fZK9FhZ-L._AC_SL1500_.jpg" alt="Anker Cable">
-    <h3>Anker Prime USB-C Cable</h3>
-    <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
-  </div>
-
-</div>
-
-<div class="disclosure">
-  Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
-</div>
+</body>
+</html>
