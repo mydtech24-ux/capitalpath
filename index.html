@@ -2,124 +2,181 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CapitalPath Members</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CapitalPath</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      color: #fff;
     }
 
-    .box {
-      background: #fff;
-      padding: 25px;
+    .container {
       width: 100%;
-      max-width: 420px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.1);
+      max-width: 1100px;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
       text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    /* CARD */
+    .card {
+      background: #ffffff;
+      color: #333;
+      border-radius: 14px;
+      padding: 30px;
+      max-width: 420px;
+      margin: 40px auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
 
     input {
       width: 100%;
-      padding: 10px;
-      margin: 6px 0;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
     }
 
     button {
       width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      background: #0d6efd;
-      color: #fff;
+      padding: 14px;
       border: none;
+      border-radius: 8px;
+      background: #000;
+      color: #fff;
+      font-size: 15px;
       cursor: pointer;
+      margin-top: 8px;
     }
 
-    .hidden { display: none; }
+    button:hover {
+      opacity: 0.9;
+    }
 
-    .members {
+    /* PRODUCTS */
+    .products {
+      margin-top: 70px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .product {
+      background: #fff;
+      color: #000;
+      border-radius: 14px;
+      padding: 20px;
       text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .product img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .product a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 20px;
+      background: #ff9900;
+      color: #000;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .product a:hover {
+      background: #e68a00;
+    }
+
+    .disclosure {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      opacity: 0.85;
     }
   </style>
 </head>
+
 <body>
+  <div class="container">
 
-<div class="box" id="authBox">
-  <h2>Create Account</h2>
+    <h1>CapitalPath</h1>
+    <p>Smart tools & resources to build your future</p>
 
-  <input id="firstName" placeholder="First name" />
-  <input id="lastName" placeholder="Last name" />
-  <input id="phone" placeholder="Phone number" />
-  <input id="address" placeholder="Address" />
-  <input id="state" placeholder="State" />
-  <input id="email" placeholder="Email" />
-  <input id="password" type="password" placeholder="Password (min 6)" />
+    <!-- LOGIN / REGISTER -->
+    <div class="card">
+      <h2>Members Area</h2>
+      <p>Login or create an account</p>
 
-  <button onclick="createAccount()">Create Account</button>
-  <button onclick="login()">Login</button>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password (min 6)">
 
-  <p id="message"></p>
-</div>
+      <button>Login</button>
+      <button>Create Account</button>
+    </div>
 
-<div class="box hidden members" id="membersBox">
-  <h2>Welcome to CapitalPath</h2>
-  <p>You now have full access.</p>
+    <!-- PRODUCTS -->
+    <div class="products">
+      <h2>Recommended Products</h2>
 
-  <a href="https://amzn.to/4bqePay" target="_blank">📘 Product #1</a><br><br>
-  <a href="https://amzn.to/46sS6XV" target="_blank">📘 Product #2</a><br><br>
-  <a href="https://amzn.to/46qDF6E" target="_blank">🔌 Product #3</a><br><br>
+      <div class="product-grid">
 
-  <button onclick="logout()">Logout</button>
-</div>
+        <!-- PRODUCT 1 -->
+        <div class="product">
+          <img src="https://m.media-amazon.com/images/I/71tbalAHYCL._AC_SL1500_.jpg">
+          <h3>Start With Why (Paperback)</h3>
+          <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+        </div>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        <!-- PRODUCT 2 -->
+        <div class="product">
+          <img src="https://m.media-amazon.com/images/I/61rR0E9X6OL._AC_SL1500_.jpg">
+          <h3>Laptop Stand Adjustable</h3>
+          <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+        </div>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
-    authDomain: "capitalpath-cf220.firebaseapp.com",
-    projectId: "capitalpath-cf220",
-    storageBucket: "capitalpath-cf220.firebasestorage.app",
-    messagingSenderId: "950285442316",
-    appId: "1:950285442316:web:9067c4017ed25370683d29"
-  };
+        <!-- PRODUCT 3 -->
+        <div class="product">
+          <img src="https://m.media-amazon.com/images/I/61aM6n6ZKPL._AC_SL1500_.jpg">
+          <h3>Anker Prime USB-C Cable</h3>
+          <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+        </div>
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+      </div>
+    </div>
 
-  window.createAccount = () => {
-    const fields = ["firstName","lastName","phone","address","state","email","password"];
-    for (let id of fields) {
-      if (!document.getElementById(id).value) {
-        message.innerText = "Please fill all fields.";
-        return;
-      }
-    }
+    <!-- DISCLOSURE -->
+    <div class="disclosure">
+      Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
+    </div>
 
-    createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then(() => message.innerText = "Account created successfully!")
-      .catch(e => message.innerText = e.message);
-  };
-
-  window.login = () => {
-    signInWithEmailAndPassword(auth, email.value, password.value)
-      .catch(e => message.innerText = e.message);
-  };
-
-  window.logout = () => signOut(auth);
-
-  onAuthStateChanged(auth, user => {
-    authBox.classList.toggle("hidden", !!user);
-    membersBox.classList.toggle("hidden", !user);
-  });
-</script>
-
+  </div>
 </body>
 </html>
