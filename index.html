@@ -1,215 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>CapitalPath Members</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>CapitalPath Members</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-* { box-sizing: border-box; font-family: Arial, sans-serif; }
+  <!-- STYLE -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #000;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-}
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 1100px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
 
-.container {
-  background: #fff;
-  width: 100%;
-  max-width: 420px;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.3);
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
 
-h1 {
-  text-align: center;
-  margin-bottom: 5px;
-}
+    p {
+      text-align: center;
+      color: #555;
+    }
 
-p.subtitle {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #555;
-}
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
 
-input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
+    button:hover {
+      opacity: 0.9;
+    }
 
-.btn-dark {
-  background: #000;
-  color: #fff;
-}
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
 
-.btn-dark:hover {
-  background: #222;
-}
+    /* PRODUCTS */
+    .products {
+      display: none;
+      margin-top: 50px;
+    }
 
-.error {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
-}
+    .products h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.products {
-  display: none;
-  text-align: center;
-}
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
+    .product-card {
+      background: #f9f9f9;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
 
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.2);
-}
+    .product-card img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
 
-.card img {
-  max-width: 100%;
-  height: 220px;
-  object-fit: contain;
-}
+    .amazon-btn {
+      display: inline-block;
+      background: #ff9900;
+      color: #000;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-.card h3 {
-  margin: 15px 0;
-}
+    .amazon-btn:hover {
+      background: #e68a00;
+    }
 
-.card a {
-  display: inline-block;
-  padding: 12px 18px;
-  background: orange;
-  color: #000;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.disclosure {
-  margin-top: 30px;
-  font-size: 13px;
-  color: #ddd;
-  text-align: center;
-}
-</style>
+    .disclosure {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container" id="authBox">
-  <h1>CapitalPath Members</h1>
-  <p class="subtitle">Login or create an account</p>
+  <div class="container">
+    <h1>CapitalPath Members</h1>
+    <p>Login or create an account to access all resources.</p>
 
-  <!-- EXTRA FIELDS -->
-  <input id="firstName" placeholder="First name">
-  <input id="lastName" placeholder="Last name">
-  <input id="phone" placeholder="Phone number">
-  <input id="address" placeholder="Address">
-  <input id="state" placeholder="State">
+    <!-- AUTH -->
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password (min 6)" />
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Create Account</button>
+    <div class="error" id="error"></div>
 
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password (min 6)">
+    <!-- PRODUCTS -->
+    <div class="products" id="products">
+      <h2>Recommended Products</h2>
 
-  <button class="btn-dark" onclick="login()">Login</button>
-  <button class="btn-dark" onclick="register()">Create Account</button>
+      <div class="product-grid">
 
-  <div class="error" id="msg"></div>
-</div>
+        <!-- BOOK -->
+        <div class="product-card">
+          <img src="https://m.media-amazon.com/images/I/41Q6dJZ2PzL._SX331_BO1,204,203,200_.jpg" alt="Start With Why">
+          <h3>Start With Why (Paperback)</h3>
+          <a href="https://amzn.to/4bqePay" target="_blank" class="amazon-btn">
+            View on Amazon
+          </a>
+        </div>
 
-<!-- PRODUCTS -->
-<div class="products" id="products">
-  <div class="product-grid">
+        <!-- PRODUCT 2 -->
+        <div class="product-card">
+          <img src="https://m.media-amazon.com/images/I/71y4X5ZJHLL._AC_SL1500_.jpg" alt="Laptop Stand">
+          <h3>Laptop Stand Adjustable</h3>
+          <a href="https://amzn.to/46sS6XV" target="_blank" class="amazon-btn">
+            View on Amazon
+          </a>
+        </div>
 
-    <div class="card">
-      <img src="https://m.media-amazon.com/images/I/71+0RZsb0JL.jpg">
-      <h3>Start With Why (Paperback)</h3>
-      <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+        <!-- PRODUCT 3 -->
+        <div class="product-card">
+          <img src="https://m.media-amazon.com/images/I/61s9Q6t5XyL._AC_SL1500_.jpg" alt="Anker USB C">
+          <h3>Anker Prime USB-C Cable</h3>
+          <a href="https://amzn.to/46qDF6E" target="_blank" class="amazon-btn">
+            View on Amazon
+          </a>
+        </div>
+
+      </div>
+
+      <div class="disclosure">
+        Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
+      </div>
     </div>
-
-    <div class="card">
-      <img src="https://m.media-amazon.com/images/I/61sH0kq4j-L._AC_SL1500_.jpg">
-      <h3>Laptop Stand Adjustable</h3>
-      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
-    </div>
-
-    <div class="card">
-      <img src="https://m.media-amazon.com/images/I/71eZ9H6Yf-L._AC_SL1500_.jpg">
-      <h3>Anker Prime USB-C Cable</h3>
-      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
-    </div>
-
   </div>
 
-  <div class="disclosure">
-    Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
-  </div>
-</div>
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } 
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
+      authDomain: "capitalpath-cf220.firebaseapp.com",
+      projectId: "capitalpath-cf220",
+      appId: "1:950285442316:web:9067c4017ed25370683d29"
+    };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
-  authDomain: "capitalpath-cf220.firebaseapp.com",
-  projectId: "capitalpath-cf220",
-};
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+    window.login = function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-window.login = () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => showProducts())
+        .catch(err => document.getElementById("error").innerText = err.message);
+    };
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(showProducts)
-    .catch(e => msg.innerText = e.message);
-};
+    window.register = function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-window.register = () => {
-  if (!firstName.value || !lastName.value || !phone.value || !address.value || !state.value || !email.value || !password.value) {
-    msg.innerText = "Please fill all fields.";
-    return;
-  }
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => showProducts())
+        .catch(err => document.getElementById("error").innerText = err.message);
+    };
 
-  createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then(showProducts)
-    .catch(e => msg.innerText = e.message);
-};
-
-function showProducts() {
-  authBox.style.display = "none";
-  products.style.display = "block";
-}
-</script>
+    function showProducts() {
+      document.querySelector(".products").style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
