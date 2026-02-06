@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>CapitalPath Members</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>CapitalPath Members</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- STYLE -->
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #000;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+}
 
-    .container {
-      background: #fff;
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 1100px;
-      width: 100%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
+/* CENTER LOGIN CARD */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+.auth-card {
+  background: #fff;
+  padding: 35px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
 
-    p {
-      text-align: center;
-      color: #555;
-    }
+.auth-card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
+.auth-card p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 10px;
-      background: #000;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.auth-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
 
-    button:hover {
-      opacity: 0.9;
-    }
+.auth-card button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
 
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 10px;
-    }
+.auth-card button:hover {
+  opacity: 0.9;
+}
 
-    /* PRODUCTS */
-    .products {
-      display: none;
-      margin-top: 50px;
-    }
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
 
-    .products h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+/* PRODUCTS */
+.products {
+  display: none;
+  padding: 60px 20px;
+}
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
+.products h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 40px;
+}
 
-    .product-card {
-      background: #f9f9f9;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+.product-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
 
-    .product-card img {
-      width: 100%;
-      max-height: 260px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
+.product-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  text-align: center;
+}
 
-    .amazon-btn {
-      display: inline-block;
-      background: #ff9900;
-      color: #000;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
-    }
+.product-card img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
 
-    .amazon-btn:hover {
-      background: #e68a00;
-    }
+.product-card h3 {
+  margin-bottom: 15px;
+}
 
-    .disclosure {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #444;
-    }
-  </style>
+.product-card a {
+  display: inline-block;
+  background: #ff9900;
+  color: #000;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.product-card a:hover {
+  background: #e68a00;
+}
+
+.disclosure {
+  text-align: center;
+  margin-top: 50px;
+  color: #ddd;
+  font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<!-- LOGIN / REGISTER -->
+<div class="auth-wrapper" id="authSection">
+  <div class="auth-card">
     <h1>CapitalPath Members</h1>
-    <p>Login or create an account to access all resources.</p>
+    <p>Login or create an account to access resources</p>
 
-    <!-- AUTH -->
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password (min 6)" />
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password (min 6)">
+
     <button onclick="login()">Login</button>
     <button onclick="register()">Create Account</button>
-    <div class="error" id="error"></div>
 
-    <!-- PRODUCTS -->
-    <div class="products" id="products">
-      <h2>Recommended Products</h2>
+    <div class="error" id="errorMsg"></div>
+  </div>
+</div>
 
-      <div class="product-grid">
+<!-- PRODUCTS -->
+<div class="products" id="productSection">
+  <h2>Recommended Products</h2>
 
-        <!-- BOOK -->
-        <div class="product-card">
-          <img src="https://m.media-amazon.com/images/I/41Q6dJZ2PzL._SX331_BO1,204,203,200_.jpg" alt="Start With Why">
-          <h3>Start With Why (Paperback)</h3>
-          <a href="https://amzn.to/4bqePay" target="_blank" class="amazon-btn">
-            View on Amazon
-          </a>
-        </div>
+  <div class="product-grid">
 
-        <!-- PRODUCT 2 -->
-        <div class="product-card">
-          <img src="https://m.media-amazon.com/images/I/71y4X5ZJHLL._AC_SL1500_.jpg" alt="Laptop Stand">
-          <h3>Laptop Stand Adjustable</h3>
-          <a href="https://amzn.to/46sS6XV" target="_blank" class="amazon-btn">
-            View on Amazon
-          </a>
-        </div>
-
-        <!-- PRODUCT 3 -->
-        <div class="product-card">
-          <img src="https://m.media-amazon.com/images/I/61s9Q6t5XyL._AC_SL1500_.jpg" alt="Anker USB C">
-          <h3>Anker Prime USB-C Cable</h3>
-          <a href="https://amzn.to/46qDF6E" target="_blank" class="amazon-btn">
-            View on Amazon
-          </a>
-        </div>
-
-      </div>
-
-      <div class="disclosure">
-        Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
-      </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400?text=Book+Image">
+      <h3>Start With Why (Paperback)</h3>
+      <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
     </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400?text=Product+2">
+      <h3>Laptop Stand Adjustable</h3>
+      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400?text=Product+3">
+      <h3>Anker Prime USB-C Cable</h3>
+      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+    </div>
+
   </div>
 
-  <!-- FIREBASE -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } 
-      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  <div class="disclosure">
+    Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
+  </div>
+</div>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
-      authDomain: "capitalpath-cf220.firebaseapp.com",
-      projectId: "capitalpath-cf220",
-      appId: "1:950285442316:web:9067c4017ed25370683d29"
-    };
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+const firebaseConfig = {
+  apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
+  authDomain: "capitalpath-cf220.firebaseapp.com",
+  projectId: "capitalpath-cf220"
+};
 
-    window.login = function () {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => showProducts())
-        .catch(err => document.getElementById("error").innerText = err.message);
-    };
+window.login = () => {
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then(showProducts)
+    .catch(e => errorMsg.innerText = e.message);
+};
 
-    window.register = function () {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+window.register = () => {
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then(showProducts)
+    .catch(e => errorMsg.innerText = e.message);
+};
 
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => showProducts())
-        .catch(err => document.getElementById("error").innerText = err.message);
-    };
-
-    function showProducts() {
-      document.querySelector(".products").style.display = "block";
-    }
-  </script>
+function showProducts() {
+  document.getElementById("authSection").style.display = "none";
+  document.getElementById("productSection").style.display = "block";
+}
+</script>
 
 </body>
 </html>
