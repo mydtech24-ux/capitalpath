@@ -1,13 +1,231 @@
-<button onclick="logout()" style="
-  position:fixed;
-  top:20px;
-  right:20px;
-  padding:10px 18px;
-  border:none;
-  border-radius:8px;
-  background:#000;
-  color:#fff;
-  cursor:pointer;
-">
-Logout
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CapitalPath Members</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  min-height: 100vh;
+}
+
+/* LOGIN SECTION */
+#authSection {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 35px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.auth-card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  text-align: center;
+  color: #555;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#errorMsg {
+  color: red;
+  text-align: center;
+}
+
+/* PRODUCTS */
+#productsSection {
+  display: none;
+  padding: 80px 20px;
+}
+
+#productsSection h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.logout-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.product-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,.25);
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product-card a {
+  display: inline-block;
+  background: #ff9900;
+  color: #000;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.disclosure {
+  text-align: center;
+  margin-top: 50px;
+  color: #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="authSection">
+  <div class="auth-card">
+    <h1>CapitalPath Members</h1>
+    <p>Login or create an account</p>
+
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password (min 6)">
+
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Create Account</button>
+
+    <div id="errorMsg"></div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="productsSection">
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+  <h2>Recommended Products</h2>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/41Q6dJZ2PzL._SX331_BO1,204,203,200_.jpg">
+      <h3>Start With Why (Paperback)</h3>
+      <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400">
+      <h3>Laptop Stand Adjustable</h3>
+      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400">
+      <h3>Anker Prime USB-C Cable</h3>
+      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+    </div>
+
+  </div>
+
+  <div class="disclosure">
+    Disclosure: As an Amazon Associate, CapitalPath earns from qualifying purchases.
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
+  authDomain: "capitalpath-cf220.firebaseapp.com",
+  projectId: "capitalpath-cf220"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    authSection.style.display = "none";
+    productsSection.style.display = "block";
+  } else {
+    authSection.style.display = "flex";
+    productsSection.style.display = "none";
+  }
+});
+
+window.login = () => {
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .catch(e => errorMsg.innerText = e.message);
+};
+
+window.register = () => {
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .catch(e => errorMsg.innerText = e.message);
+};
+
+window.logout = () => {
+  signOut(auth);
+};
+</script>
+
+</body>
+</html>
