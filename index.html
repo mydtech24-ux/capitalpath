@@ -5,7 +5,7 @@
 <title>CapitalPath Members</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Firebase (Compat mode = pa kraze) -->
+<!-- Firebase (Compat mode – stable) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
@@ -18,7 +18,7 @@ body {
   color: #000;
 }
 
-/* Center forms */
+/* LOGIN + CREATE FORMS */
 .center {
   min-height: 100vh;
   display: flex;
@@ -36,7 +36,7 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-input, button, select {
+input, button {
   width: 100%;
   padding: 14px;
   margin-top: 10px;
@@ -47,11 +47,10 @@ input, button, select {
 button {
   background: #000;
   color: #fff;
-  border: none;
   cursor: pointer;
 }
 
-button:hover { opacity: .85; }
+button:hover { opacity: 0.85; }
 
 .error { color: red; text-align: center; }
 
@@ -67,8 +66,8 @@ button:hover { opacity: .85; }
   top: 20px;
   right: 20px;
   padding: 10px 18px;
-  background: #000;
-  color: #fff;
+  background: black;
+  color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -78,7 +77,7 @@ button:hover { opacity: .85; }
   max-width: 1100px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
   gap: 25px;
 }
 
@@ -100,7 +99,7 @@ button:hover { opacity: .85; }
 
 <body>
 
-<!-- LOGIN FORM -->
+<!-- LOGIN -->
 <div id="loginSection" class="center">
   <div class="card">
     <h2>Login to CapitalPath</h2>
@@ -112,11 +111,10 @@ button:hover { opacity: .85; }
   </div>
 </div>
 
-<!-- CREATE ACCOUNT FORM -->
+<!-- CREATE ACCOUNT -->
 <div id="createSection" class="center" style="display:none;">
   <div class="card">
     <h2>Create Your Account</h2>
-
     <input id="firstName" placeholder="First Name">
     <input id="lastName" placeholder="Last Name">
     <input id="phone" placeholder="Phone Number">
@@ -124,17 +122,14 @@ button:hover { opacity: .85; }
     <input id="state" placeholder="State / Region">
     <input id="createEmail" placeholder="Email">
     <input id="createPassword" type="password" placeholder="Password (min 6 chars)">
-    
     <button onclick="register()">Create Account</button>
     <button onclick="showLogin()">Back to Login</button>
-
     <div id="createError" class="error"></div>
   </div>
 </div>
 
-<!-- PRODUCTS (AFTER LOGIN) -->
 <!-- PRODUCTS -->
-<div id="productsSection" style="display:none;">
+<div id="productsSection">
   <button class="logout" onclick="logout()">Logout</button>
 
   <h2 style="text-align:center;">Recommended Products</h2>
@@ -162,7 +157,8 @@ button:hover { opacity: .85; }
   </div>
 </div>
 
-// Firebase config
+<script>
+// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
   authDomain: "capitalpath-cf220.firebaseapp.com"
@@ -171,7 +167,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// UI Switch
+// UI Navigation
 function showCreate() {
   loginSection.style.display = "none";
   createSection.style.display = "flex";
@@ -182,7 +178,7 @@ function showLogin() {
   loginSection.style.display = "flex";
 }
 
-// AUTH STATE
+// Auth State Listener
 auth.onAuthStateChanged(user => {
   if (user) {
     loginSection.style.display = "none";
@@ -190,6 +186,7 @@ auth.onAuthStateChanged(user => {
     productsSection.style.display = "block";
   } else {
     loginSection.style.display = "flex";
+    createSection.style.display = "none";
     productsSection.style.display = "none";
   }
 });
@@ -204,11 +201,6 @@ function login() {
 
 // REGISTER
 function register() {
-  if (!createEmail.value || !createPassword.value) {
-    createError.innerText = "Please fill email and password.";
-    return;
-  }
-
   auth.createUserWithEmailAndPassword(
     createEmail.value,
     createPassword.value
@@ -223,4 +215,3 @@ function logout() {
 
 </body>
 </html>
-
