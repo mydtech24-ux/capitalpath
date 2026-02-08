@@ -5,7 +5,7 @@
 <title>CapitalPath Members</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Firebase (Compat mode – stable) -->
+<!-- Firebase (Compat mode – Stable) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
@@ -18,7 +18,7 @@ body {
   color: #000;
 }
 
-/* LOGIN + CREATE FORMS */
+/* CENTER FORMS */
 .center {
   min-height: 100vh;
   display: flex;
@@ -48,13 +48,14 @@ button {
   background: #000;
   color: #fff;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover { opacity: 0.85; }
 
 .error { color: red; text-align: center; }
 
-/* PRODUCTS */
+/* PRODUCTS SECTION */
 #productsSection {
   display: none;
   padding: 50px 20px;
@@ -73,6 +74,7 @@ button:hover { opacity: 0.85; }
   cursor: pointer;
 }
 
+/* GRID */
 .grid {
   max-width: 1100px;
   margin: auto;
@@ -81,6 +83,7 @@ button:hover { opacity: 0.85; }
   gap: 25px;
 }
 
+/* PRODUCT CARD PRO MAX */
 .product {
   background: #fff;
   color: #000;
@@ -89,10 +92,46 @@ button:hover { opacity: 0.85; }
   text-align: center;
 }
 
-.product img {
+.pro {
+  background: #fff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.pro:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.pro img {
+  border-radius: 12px;
+  margin-bottom: 15px;
   width: 100%;
-  max-height: 220px;
+  max-height: 230px;
   object-fit: contain;
+}
+
+.desc {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #0a84ff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #0066cc;
 }
 </style>
 </head>
@@ -115,6 +154,7 @@ button:hover { opacity: 0.85; }
 <div id="createSection" class="center" style="display:none;">
   <div class="card">
     <h2>Create Your Account</h2>
+
     <input id="firstName" placeholder="First Name">
     <input id="lastName" placeholder="Last Name">
     <input id="phone" placeholder="Phone Number">
@@ -122,36 +162,44 @@ button:hover { opacity: 0.85; }
     <input id="state" placeholder="State / Region">
     <input id="createEmail" placeholder="Email">
     <input id="createPassword" type="password" placeholder="Password (min 6 chars)">
+
     <button onclick="register()">Create Account</button>
     <button onclick="showLogin()">Back to Login</button>
+
     <div id="createError" class="error"></div>
   </div>
 </div>
 
-<!-- PRODUCTS -->
+<!-- PRODUCTS (AFTER LOGIN) -->
 <div id="productsSection">
   <button class="logout" onclick="logout()">Logout</button>
 
-  <h2 style="text-align:center;">Recommended Products</h2>
+  <h2 style="text-align:center; font-size: 32px; margin-bottom: 40px;">Recommended Products</h2>
 
   <div class="grid">
 
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/41Q6dJZ2PzL._SX331_BO1,204,203,200_.jpg">
+    <!-- PRODUCT #1 -->
+    <div class="product pro">
+      <img src="https://m.media-amazon.com/images/I/71M1aD35XoL._CLa%7C2922,2400%7C71q8bzARVzL.jpg,71NBZIExBCL.jpg%7C0,0,1328,2400+1594,0,1328,2400+664,0,1594,2400_._SY300_.jpg">
       <h3>Start With Why</h3>
-      <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+      <p class="desc">One of the best-selling leadership books for entrepreneurs & creators.</p>
+      <a class="btn" href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
     </div>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/400x400">
-      <h3>Laptop Stand Adjustable</h3>
-      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+    <!-- PRODUCT #2 -->
+    <div class="product pro">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/71mNTsmd4NL._AC_UL232_SR232,232_.jpg">
+      <h3>Adjustable Laptop Stand</h3>
+      <p class="desc">Ergonomic stand that improves posture & boosts productivity daily.</p>
+      <a class="btn" href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
     </div>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/400x400">
+    <!-- PRODUCT #3 -->
+    <div class="product pro">
+      <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/07b469cb-67c9-4071-a4bc-eb9236d42f81.__CR0,0,2928,1200_PT0_SX1464_V1___.jpg">
       <h3>Anker USB-C Cable</h3>
-      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+      <p class="desc">Ultra-durable fast-charging USB-C cable — perfect for everyday use.</p>
+      <a class="btn" href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
     </div>
 
   </div>
@@ -167,7 +215,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// UI Navigation
+// UI Switches
 function showCreate() {
   loginSection.style.display = "none";
   createSection.style.display = "flex";
@@ -178,7 +226,7 @@ function showLogin() {
   loginSection.style.display = "flex";
 }
 
-// Auth State Listener
+// AUTH STATE
 auth.onAuthStateChanged(user => {
   if (user) {
     loginSection.style.display = "none";
@@ -194,16 +242,14 @@ auth.onAuthStateChanged(user => {
 // LOGIN
 function login() {
   auth.signInWithEmailAndPassword(
-    loginEmail.value,
-    loginPassword.value
+    loginEmail.value, loginPassword.value
   ).catch(e => loginError.innerText = e.message);
 }
 
 // REGISTER
 function register() {
   auth.createUserWithEmailAndPassword(
-    createEmail.value,
-    createPassword.value
+    createEmail.value, createPassword.value
   ).catch(e => createError.innerText = e.message);
 }
 
