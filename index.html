@@ -5,7 +5,7 @@
 <title>CapitalPath Members</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Firebase (Compat mode – Stable) -->
+<!-- Firebase (Compat Mode) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
@@ -18,7 +18,13 @@ body {
   color: #000;
 }
 
-/* CENTER FORMS */
+.header-logo {
+  width: 120px;
+  display: block;
+  margin: 25px auto 10px;
+}
+
+/* Center forms */
 .center {
   min-height: 100vh;
   display: flex;
@@ -47,11 +53,11 @@ input, button {
 button {
   background: #000;
   color: #fff;
+  border: none;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-button:hover { opacity: 0.85; }
+button:hover { opacity: .85; }
 
 .error { color: red; text-align: center; }
 
@@ -67,23 +73,21 @@ button:hover { opacity: 0.85; }
   top: 20px;
   right: 20px;
   padding: 10px 18px;
-  background: black;
-  color: white;
+  background: #000;
+  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
-/* GRID */
 .grid {
   max-width: 1100px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 25px;
 }
 
-/* PRODUCT CARD PRO MAX */
 .product {
   background: #fff;
   color: #000;
@@ -92,68 +96,48 @@ button:hover { opacity: 0.85; }
   text-align: center;
 }
 
-.pro {
-  background: #fff;
-  padding: 25px;
-  border-radius: 18px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.25);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.pro:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-}
-
-.pro img {
-  border-radius: 12px;
-  margin-bottom: 15px;
+.product img {
   width: 100%;
-  max-height: 230px;
+  max-height: 220px;
   object-fit: contain;
 }
 
-.desc {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.btn {
+.product a {
   display: inline-block;
-  padding: 12px 18px;
-  background: #0a84ff;
-  color: white;
-  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: orange;
+  color: #000;
   text-decoration: none;
+  border-radius: 8px;
   font-weight: bold;
-  transition: background 0.2s;
-}
-
-.btn:hover {
-  background: #0066cc;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg" class="header-logo">
+
+<!-- LOGIN FORM -->
 <div id="loginSection" class="center">
   <div class="card">
-    <h2>Login to CapitalPath</h2>
+    <h2 style="text-align:center;">CapitalPath Members</h2>
+    <p style="text-align:center;">Login or create an account</p>
+
     <input id="loginEmail" placeholder="Email">
     <input id="loginPassword" type="password" placeholder="Password">
     <button onclick="login()">Login</button>
     <button onclick="showCreate()">Create Account</button>
+
     <div id="loginError" class="error"></div>
   </div>
 </div>
 
-<!-- CREATE ACCOUNT -->
+<!-- CREATE ACCOUNT FORM -->
 <div id="createSection" class="center" style="display:none;">
   <div class="card">
-    <h2>Create Your Account</h2>
+    <h2 style="text-align:center;">Create Your Account</h2>
 
     <input id="firstName" placeholder="First Name">
     <input id="lastName" placeholder="Last Name">
@@ -170,43 +154,49 @@ button:hover { opacity: 0.85; }
   </div>
 </div>
 
-<!-- PRODUCTS (AFTER LOGIN) -->
+<!-- PRODUCTS SECTION -->
 <div id="productsSection">
+
   <button class="logout" onclick="logout()">Logout</button>
 
-  <h2 style="text-align:center; font-size: 32px; margin-bottom: 40px;">Recommended Products</h2>
+  <h2 style="text-align:center;color:white;">Recommended Products</h2>
 
   <div class="grid">
 
-    <!-- PRODUCT #1 -->
-    <div class="product pro">
+    <!-- PRODUCT 1 -->
+    <div class="product">
       <img src="https://m.media-amazon.com/images/I/71M1aD35XoL._CLa%7C2922,2400%7C71q8bzARVzL.jpg,71NBZIExBCL.jpg%7C0,0,1328,2400+1594,0,1328,2400+664,0,1594,2400_._SY300_.jpg">
-      <h3>Start With Why</h3>
-      <p class="desc">One of the best-selling leadership books for entrepreneurs & creators.</p>
-      <a class="btn" href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+      <h3>Start With Why (Paperback)</h3>
+      <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
     </div>
 
-    <!-- PRODUCT #2 -->
-    <div class="product pro">
+    <!-- PRODUCT 2 -->
+    <div class="product">
       <img src="https://images-na.ssl-images-amazon.com/images/I/71mNTsmd4NL._AC_UL232_SR232,232_.jpg">
-      <h3>Adjustable Laptop Stand</h3>
-      <p class="desc">Ergonomic stand that improves posture & boosts productivity daily.</p>
-      <a class="btn" href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+      <h3>Laptop Stand Adjustable</h3>
+      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
     </div>
 
-    <!-- PRODUCT #3 -->
-    <div class="product pro">
+    <!-- PRODUCT 3 -->
+    <div class="product">
       <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/07b469cb-67c9-4071-a4bc-eb9236d42f81.__CR0,0,2928,1200_PT0_SX1464_V1___.jpg">
-      <h3>Anker USB-C Cable</h3>
-      <p class="desc">Ultra-durable fast-charging USB-C cable — perfect for everyday use.</p>
-      <a class="btn" href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+      <h3>Anker Prime USB-C Cable</h3>
+      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
+    </div>
+
+    <!-- PRODUCT 4 = YOUR PDF -->
+    <div class="product">
+      <img src="https://m.media-amazon.com/images/I/41Q6dJZ2PzL._SX331_BO1,204,203,200_.jpg">
+      <h3>Your 7-Day Financial Reset Guide</h3>
+      <a href="/cba85dfc-82d6-44b3-b9e3-b874b2603929.pdf" target="_blank">Download PDF</a>
     </div>
 
   </div>
 </div>
 
+<!-- FIREBASE SCRIPT -->
 <script>
-// Firebase
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
   authDomain: "capitalpath-cf220.firebaseapp.com"
@@ -215,7 +205,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// UI Switches
+// NAVIGATION
 function showCreate() {
   loginSection.style.display = "none";
   createSection.style.display = "flex";
@@ -226,7 +216,7 @@ function showLogin() {
   loginSection.style.display = "flex";
 }
 
-// AUTH STATE
+// AUTH CHANGE
 auth.onAuthStateChanged(user => {
   if (user) {
     loginSection.style.display = "none";
@@ -234,7 +224,6 @@ auth.onAuthStateChanged(user => {
     productsSection.style.display = "block";
   } else {
     loginSection.style.display = "flex";
-    createSection.style.display = "none";
     productsSection.style.display = "none";
   }
 });
@@ -242,21 +231,26 @@ auth.onAuthStateChanged(user => {
 // LOGIN
 function login() {
   auth.signInWithEmailAndPassword(
-    loginEmail.value, loginPassword.value
+    loginEmail.value,
+    loginPassword.value
   ).catch(e => loginError.innerText = e.message);
 }
 
 // REGISTER
 function register() {
+  if (!createEmail.value || !createPassword.value) {
+    createError.innerText = "Please fill email and password.";
+    return;
+  }
   auth.createUserWithEmailAndPassword(
-    createEmail.value, createPassword.value
+    createEmail.value,
+    createPassword.value
   ).catch(e => createError.innerText = e.message);
 }
 
 // LOGOUT
-function logout() {
-  auth.signOut();
-}
+function logout() { auth.signOut(); }
+
 </script>
 
 </body>
