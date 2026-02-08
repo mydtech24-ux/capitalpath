@@ -5,7 +5,7 @@
 <title>CapitalPath Members</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Firebase Compat -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
@@ -13,25 +13,29 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  min-height: 100vh;
-  color: #000;
+  background: #0f2027;
   background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  background-size: cover;
-  padding-top: 160px; /* space for logo */
+  min-height: 100vh;
+  color: #fff;
 }
 
-.header-logo {
-  width: 180px;
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  top: -100px; /* lower the logo */
-  z-index: 9999;
+/* ===== LOGO GLOBAL ===== */
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Center forms */
+.logo-wrapper img {
+  width: 230px;
+  height: auto;
+  filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.5));
+  border-radius: 0px;
+  background: transparent !important;
+}
+
+/* ===== FORMS ===== */
 .center {
-  min-height: 60vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,11 +43,12 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: #ffffff;
   padding: 30px;
   border-radius: 16px;
   width: 100%;
   max-width: 420px;
+  color: #000;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
@@ -58,30 +63,31 @@ input, button {
 button {
   background: #000;
   color: #fff;
-  border: none;
   cursor: pointer;
-  font-weight: bold;
 }
 
 button:hover { opacity: .85; }
 
-.error { color: red; text-align: center; }
+.error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
 
-/* Products Area */
+/* ============== PRODUCTS PAGE ============== */
 #productsSection {
   display: none;
-  padding: 50px 20px;
-  color: #fff;
+  padding: 40px 20px;
 }
 
 .logout {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 18px;
+  top: 15px;
+  right: 15px;
   background: #000;
   color: #fff;
-  border: none;
+  padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -97,53 +103,49 @@ button:hover { opacity: .85; }
 .product {
   background: #fff;
   color: #000;
-  padding: 20px;
   border-radius: 15px;
+  padding: 20px;
   text-align: center;
 }
 
 .product img {
   width: 100%;
-  max-height: 220px;
+  max-height: 230px;
   object-fit: contain;
-}
-
-.product a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 18px;
-  background: orange;
-  color: #000;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
 }
 </style>
 </head>
-
 <body>
 
-<!-- LOGO -->
-<img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg" class="header-logo">
-
-<!-- LOGIN -->
+<!-- ========== LOGIN SECTION ========== -->
 <div id="loginSection" class="center">
   <div class="card">
-    <h2 style="text-align:center;">CapitalPath Members</h2>
-    <p style="text-align:center;">Login or create an account</p>
+
+    <div class="logo-wrapper">
+      <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
+    </div>
+
+    <h2 style="text-align:center;">Login to CapitalPath</h2>
 
     <input id="loginEmail" placeholder="Email">
     <input id="loginPassword" type="password" placeholder="Password">
+    
     <button onclick="login()">Login</button>
     <button onclick="showCreate()">Create Account</button>
 
     <div id="loginError" class="error"></div>
+
   </div>
 </div>
 
-<!-- CREATE ACCOUNT -->
+<!-- ========== CREATE ACCOUNT SECTION ========== -->
 <div id="createSection" class="center" style="display:none;">
   <div class="card">
+
+    <div class="logo-wrapper">
+      <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
+    </div>
+
     <h2 style="text-align:center;">Create Your Account</h2>
 
     <input id="firstName" placeholder="First Name">
@@ -161,47 +163,47 @@ button:hover { opacity: .85; }
   </div>
 </div>
 
-<!-- PRODUCTS -->
+<!-- ========== PRODUCTS SECTION ========== -->
 <div id="productsSection">
+  
   <button class="logout" onclick="logout()">Logout</button>
 
-  <h2 style="text-align:center;color:white;">Recommended Products</h2>
+  <div class="logo-wrapper" style="margin-top:40px;">
+    <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
+  </div>
+
+  <h2 style="text-align:center;color:#fff;">Recommended Products</h2>
 
   <div class="grid">
 
-    <!-- PRODUCT 1 -->
+    <!-- BOOK -->
     <div class="product">
       <img src="https://m.media-amazon.com/images/I/71M1aD35XoL._CLa%7C2922,2400%7C71q8bzARVzL.jpg,71NBZIExBCL.jpg%7C0,0,1328,2400+1594,0,1328,2400+664,0,1594,2400_._SY300_.jpg">
       <h3>Start With Why (Paperback)</h3>
       <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
     </div>
 
-    <!-- PRODUCT 2 -->
+    <!-- LAPTOP STAND -->
     <div class="product">
       <img src="https://images-na.ssl-images-amazon.com/images/I/71mNTsmd4NL._AC_UL232_SR232,232_.jpg">
       <h3>Laptop Stand Adjustable</h3>
       <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
     </div>
 
-    <!-- PRODUCT 3 -->
+    <!-- ANKER CABLE -->
     <div class="product">
       <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/07b469cb-67c9-4071-a4bc-eb9236d42f81.__CR0,0,2928,1200_PT0_SX1464_V1___.jpg">
       <h3>Anker Prime USB-C Cable</h3>
       <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
     </div>
 
-    <!-- PRODUCT 4: YOUR PDF -->
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/41Q6dJZ2PzL._SX331_BO1,204,203,200_.jpg">
-      <h3>Your 7-Day Financial Reset Guide</h3>
-      <a href="/cba85dfc-82d6-44b3-b9e3-b874b2603929.pdf" target="_blank">Download PDF</a>
-    </div>
-
   </div>
+
 </div>
 
-<!-- FIREBASE AUTH SCRIPT -->
+<!-- ========== FIREBASE SCRIPT ========== -->
 <script>
+// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
   authDomain: "capitalpath-cf220.firebaseapp.com"
@@ -210,6 +212,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+// Switch UI
 function showCreate() {
   loginSection.style.display = "none";
   createSection.style.display = "flex";
@@ -220,6 +223,7 @@ function showLogin() {
   loginSection.style.display = "flex";
 }
 
+// Auth listener
 auth.onAuthStateChanged(user => {
   if (user) {
     loginSection.style.display = "none";
@@ -231,23 +235,28 @@ auth.onAuthStateChanged(user => {
   }
 });
 
+// Login
 function login() {
-  auth
-    .signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
-    .catch(e => loginError.innerText = e.message);
+  auth.signInWithEmailAndPassword(
+    loginEmail.value,
+    loginPassword.value
+  ).catch(e => loginError.innerText = e.message);
 }
 
+// Register
 function register() {
   if (!createEmail.value || !createPassword.value) {
-    createError.innerText = "Please fill email and password.";
+    createError.innerText = "Please enter email and password.";
     return;
   }
 
-  auth
-    .createUserWithEmailAndPassword(createEmail.value, createPassword.value)
-    .catch(e => createError.innerText = e.message);
+  auth.createUserWithEmailAndPassword(
+    createEmail.value,
+    createPassword.value
+  ).catch(e => createError.innerText = e.message);
 }
 
+// Logout
 function logout() {
   auth.signOut();
 }
