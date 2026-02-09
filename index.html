@@ -13,29 +13,22 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0f2027;
   background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   min-height: 100vh;
-  color: #fff;
+  color: #000;
 }
 
-/* ===== LOGO GLOBAL ===== */
-.logo-wrapper {
+header {
   text-align: center;
-  margin-bottom: 20px;
+  padding: 20px;
+}
+header img {
+  width: 160px;
+  border-radius: 10px;
 }
 
-.logo-wrapper img {
-  width: 230px;
-  height: auto;
-  filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.5));
-  border-radius: 0px;
-  background: transparent !important;
-}
-
-/* ===== FORMS ===== */
 .center {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,12 +36,11 @@ body {
 }
 
 .card {
-  background: #ffffff;
+  background: #fff;
   padding: 30px;
   border-radius: 16px;
   width: 100%;
   max-width: 420px;
-  color: #000;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
@@ -63,31 +55,29 @@ input, button {
 button {
   background: #000;
   color: #fff;
+  border: none;
   cursor: pointer;
+  font-weight: bold;
 }
-
 button:hover { opacity: .85; }
 
-.error {
-  text-align: center;
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-}
+.error { color: red; text-align: center; }
 
-/* ============== PRODUCTS PAGE ============== */
+/* PRODUCTS */
 #productsSection {
   display: none;
-  padding: 40px 20px;
+  padding: 20px;
+  color: #fff;
 }
 
 .logout {
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
   background: #000;
   color: #fff;
-  padding: 12px 20px;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -96,58 +86,58 @@ button:hover { opacity: .85; }
   max-width: 1100px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
 }
 
 .product {
   background: #fff;
   color: #000;
-  border-radius: 15px;
   padding: 20px;
+  border-radius: 15px;
   text-align: center;
 }
 
 .product img {
   width: 100%;
-  max-height: 230px;
+  max-height: 260px;
   object-fit: contain;
 }
+.product a {
+  display: block;
+  margin-top: 10px;
+  padding: 12px;
+  background: #0f172a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.product a:hover { opacity: .85; }
 </style>
 </head>
+
 <body>
 
-<!-- ========== LOGIN SECTION ========== -->
+<header>
+  <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
+</header>
+
+<!-- LOGIN SECTION -->
 <div id="loginSection" class="center">
   <div class="card">
-
-    <div class="logo-wrapper">
-      <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
-    </div>
-
-    <h2 style="text-align:center;">Login to CapitalPath</h2>
-
+    <h2>Login to CapitalPath</h2>
     <input id="loginEmail" placeholder="Email">
     <input id="loginPassword" type="password" placeholder="Password">
-    
     <button onclick="login()">Login</button>
     <button onclick="showCreate()">Create Account</button>
-
     <div id="loginError" class="error"></div>
-
   </div>
 </div>
 
-<!-- ========== CREATE ACCOUNT SECTION ========== -->
+<!-- CREATE ACCOUNT -->
 <div id="createSection" class="center" style="display:none;">
   <div class="card">
-
-    <div class="logo-wrapper">
-      <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
-    </div>
-
-    <h2 style="text-align:center;">Create Your Account</h2>
-
+    <h2>Create Your Account</h2>
     <input id="firstName" placeholder="First Name">
     <input id="lastName" placeholder="Last Name">
     <input id="phone" placeholder="Phone Number">
@@ -155,111 +145,98 @@ button:hover { opacity: .85; }
     <input id="state" placeholder="State / Region">
     <input id="createEmail" placeholder="Email">
     <input id="createPassword" type="password" placeholder="Password (min 6 chars)">
-
     <button onclick="register()">Create Account</button>
     <button onclick="showLogin()">Back to Login</button>
-
     <div id="createError" class="error"></div>
   </div>
 </div>
 
-<!-- ========== PRODUCTS SECTION ========== -->
+<!-- PRODUCTS SECTION -->
 <div id="productsSection">
-  
-  <button class="logout" onclick="logout()">Logout</button>
 
-  <div class="logo-wrapper" style="margin-top:40px;">
-    <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
+<button class="logout" onclick="logout()">Logout</button>
+
+<h2 style="text-align:center; color:white;">CapitalPath Recommended Resources</h2>
+
+<div class="grid">
+
+  <!-- PRODUCT 1 — YOUR DIGITAL BOOK -->
+  <div class="product">
+    <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/A_digital_graphic_design_book_cover_features_Mydje.png">
+    <h3>7-Day Digital Product Launch Guide</h3>
+
+    <!-- FREE SAMPLE -->
+    <a href="SAMPLE_PDF_URL" target="_blank">📘 Download Free Sample</a>
+
+    <!-- BUY FULL GUIDE -->
+    <a href="STRIPE_PAYMENT_LINK" target="_blank">💳 Buy Full Guide — $49</a>
+
+    <!-- FULL PDF DOWNLOAD -->
+    <a href="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/The%207-Day%20Digital%20Product%20Launch%20(2).pdf" 
+       target="_blank">📄 Download Full Guide (PDF)</a>
   </div>
 
-  <h2 style="text-align:center;color:#fff;">Recommended Products</h2>
+  <!-- PRODUCT 2 — LAPTOP STAND -->
+  <div class="product">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/71mNTsmd4NL._AC_UL232_SR232,232_.jpg">
+    <h3>Adjustable Laptop Stand</h3>
+    <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
+  </div>
 
-  <div class="grid">
+  <!-- PRODUCT 3 — START WITH WHY -->
+  <div class="product">
+    <img src="https://m.media-amazon.com/images/I/71M1aD35XoL._CLa%7C2922,2400%7C71q8bzARVzL.jpg,71NBZIExBCL.jpg%7C0,0,1328,2400+1594,0,1328,2400+664,0,1594,2400_._SY300_.jpg">
+    <h3>Start With Why – Simon Sinek</h3>
+    <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+  </div>
 
-    <!-- BOOK -->
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/71M1aD35XoL._CLa%7C2922,2400%7C71q8bzARVzL.jpg,71NBZIExBCL.jpg%7C0,0,1328,2400+1594,0,1328,2400+664,0,1594,2400_._SY300_.jpg">
-      <h3>Start With Why (Paperback)</h3>
-      <a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
-    </div>
-
-    <!-- LAPTOP STAND -->
-    <div class="product">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/71mNTsmd4NL._AC_UL232_SR232,232_.jpg">
-      <h3>Laptop Stand Adjustable</h3>
-      <a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
-    </div>
-
-    <!-- ANKER CABLE -->
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/07b469cb-67c9-4071-a4bc-eb9236d42f81.__CR0,0,2928,1200_PT0_SX1464_V1___.jpg">
-      <h3>Anker Prime USB-C Cable</h3>
-      <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
-    </div>
-
+  <!-- PRODUCT 4 — ANKER CABLE -->
+  <div class="product">
+    <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/07b469cb-67c9-4071-a4bc-eb9236d42f81.__CR0,0,2928,1200_PT0_SX1464_V1___.jpg">
+    <h3>Anker USB-C Fast Charging Cable</h3>
+    <a href="https://amzn.to/46qDF6E" target="_blank">View on Amazon</a>
   </div>
 
 </div>
+</div>
 
-<!-- ========== FIREBASE SCRIPT ========== -->
 <script>
-// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
   authDomain: "capitalpath-cf220.firebaseapp.com"
 };
-
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// Switch UI
-function showCreate() {
-  loginSection.style.display = "none";
-  createSection.style.display = "flex";
-}
+function showCreate(){ loginSection.style.display="none"; createSection.style.display="flex"; }
+function showLogin(){ createSection.style.display="none"; loginSection.style.display="flex"; }
 
-function showLogin() {
-  createSection.style.display = "none";
-  loginSection.style.display = "flex";
-}
-
-// Auth listener
-auth.onAuthStateChanged(user => {
-  if (user) {
-    loginSection.style.display = "none";
-    createSection.style.display = "none";
-    productsSection.style.display = "block";
+auth.onAuthStateChanged(user=>{
+  if(user){
+    loginSection.style.display="none";
+    createSection.style.display="none";
+    productsSection.style.display="block";
   } else {
-    loginSection.style.display = "flex";
-    productsSection.style.display = "none";
+    loginSection.style.display="flex";
+    productsSection.style.display="none";
   }
 });
 
-// Login
-function login() {
-  auth.signInWithEmailAndPassword(
-    loginEmail.value,
-    loginPassword.value
-  ).catch(e => loginError.innerText = e.message);
+function login(){
+  auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
+  .catch(e=>loginError.innerText=e.message);
 }
 
-// Register
-function register() {
-  if (!createEmail.value || !createPassword.value) {
-    createError.innerText = "Please enter email and password.";
+function register(){
+  if(!createEmail.value || !createPassword.value){
+    createError.innerText="Please enter email & password.";
     return;
   }
-
-  auth.createUserWithEmailAndPassword(
-    createEmail.value,
-    createPassword.value
-  ).catch(e => createError.innerText = e.message);
+  auth.createUserWithEmailAndPassword(createEmail.value, createPassword.value)
+  .catch(e=>createError.innerText=e.message);
 }
 
-// Logout
-function logout() {
-  auth.signOut();
-}
+function logout(){ auth.signOut(); }
 </script>
 
 </body>
