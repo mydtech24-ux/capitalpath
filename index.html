@@ -23,8 +23,8 @@ header {
   padding: 20px;
 }
 header img {
-  width: 160px;
-  border-radius: 10px;
+  width: 170px;
+  border-radius: 12px;
 }
 
 .center {
@@ -166,10 +166,11 @@ button:hover { opacity: .85; }
     <h3>7-Day Digital Product Launch Guide</h3>
 
     <!-- FREE SAMPLE -->
-    <a href="SAMPLE_PDF_URL" target="_blank">📘 Download Free Sample</a>
+    <a href="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/b59bdff488e87c877d4f7f8d6116dbdc2af070ef/7-Day%20Digital%20Product%20Launch%20Guide%20%E2%80%94%20Sample%20Edition.pdf" 
+       target="_blank">📘 Download Free Sample</a>
 
     <!-- BUY FULL GUIDE -->
-    <a href="STRIPE_PAYMENT_LINK" target="_blank">💳 Buy Full Guide — $49</a>
+    <a href="https://buy.stripe.com/9B600i9hP4yx9V52A66Zy01" target="_blank">💳 Buy Full Guide — $49</a>
 
     <!-- FULL PDF DOWNLOAD -->
     <a href="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/The%207-Day%20Digital%20Product%20Launch%20(2).pdf" 
@@ -222,20 +223,8 @@ auth.onAuthStateChanged(user=>{
   }
 });
 
-function login(){
-  auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
-  .catch(e=>loginError.innerText=e.message);
-}
-
-function register(){
-  if(!createEmail.value || !createPassword.value){
-    createError.innerText="Please enter email & password.";
-    return;
-  }
-  auth.createUserWithEmailAndPassword(createEmail.value, createPassword.value)
-  .catch(e=>createError.innerText=e.message);
-}
-
+function login(){ auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value).catch(e=>loginError.innerText=e.message); }
+function register(){ if(!createEmail.value || !createPassword.value){ createError.innerText="Please enter email & password.";return;} auth.createUserWithEmailAndPassword(createEmail.value,createPassword.value).catch(e=>createError.innerText=e.message); }
 function logout(){ auth.signOut(); }
 </script>
 
