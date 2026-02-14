@@ -136,13 +136,22 @@ border-radius:8px;
 <div class="card">
 <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
 <h2>Create Account</h2>
+
+<input id="firstName" placeholder="First Name">
+<input id="lastName" placeholder="Last Name">
+<input id="phone" placeholder="Phone Number">
+<input id="state" placeholder="State / Region">
+
 <input id="createEmail" type="email" placeholder="Email">
-<input id="createPassword" type="password" placeholder="Password">
+<input id="createPassword" type="password" placeholder="Password (min 6)">
+
 <button onclick="register()">Create Account</button>
 <button onclick="showLogin()">Back to Login</button>
+
 <div id="createError" class="error"></div>
 </div>
 </div>
+
 
 <!-- PRODUCTS -->
 <div id="productsSection">
@@ -228,11 +237,30 @@ const firebaseConfig={
 apiKey:"AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
 authDomain:"capitalpath-cf220.firebaseapp.com"
 };
+
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth();
 
-function showCreate(){loginSection.style.display="none";createSection.style.display="flex";}
-function showLogin(){createSection.style.display="none";loginSection.style.display="flex";}
+const loginSection=document.getElementById("loginSection");
+const createSection=document.getElementById("createSection");
+const productsSection=document.getElementById("productsSection");
+
+const loginEmail=document.getElementById("loginEmail");
+const loginPassword=document.getElementById("loginPassword");
+const createEmail=document.getElementById("createEmail");
+const createPassword=document.getElementById("createPassword");
+const loginError=document.getElementById("loginError");
+const createError=document.getElementById("createError");
+
+function showCreate(){
+loginSection.style.display="none";
+createSection.style.display="flex";
+}
+
+function showLogin(){
+createSection.style.display="none";
+loginSection.style.display="flex";
+}
 
 auth.onAuthStateChanged(user=>{
 if(user){
@@ -241,6 +269,7 @@ createSection.style.display="none";
 productsSection.style.display="block";
 }else{
 loginSection.style.display="flex";
+createSection.style.display="none";
 productsSection.style.display="none";
 }
 });
@@ -249,17 +278,42 @@ function login(){
 auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
 .catch(e=>loginError.innerText=e.message);
 }
-
+  
 function register(){
-auth.createUserWithEmailAndPassword(createEmail.value,createPassword.value)
+
+const firstName=document.getElementById("firstName").value;
+const lastName=document.getElementById("lastName").value;
+const phone=document.getElementById("phone").value;
+const state=document.getElementById("state").value;
+const email=createEmail.value;
+const password=createPassword.value;
+
+if(!firstName || !lastName || !phone || !state || !email || !password){
+createError.innerText="Please fill all fields.";
+return;
+}
+
+auth.createUserWithEmailAndPassword(email,password)
+.then((userCredential)=>{
+
+// Save display name
+return userCredential.user.updateProfile({
+displayName:firstName+" "+lastName
+});
+
+})
 .catch(e=>createError.innerText=e.message);
 }
 
-function logout(){auth.signOut();}
+
+function logout(){
+auth.signOut();
+}
 </script>
 
 </body>
 </html>
+
 
 
 
