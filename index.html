@@ -136,13 +136,22 @@ border-radius:8px;
 <div class="card">
 <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
 <h2>Create Account</h2>
+
+<input id="firstName" placeholder="First Name">
+<input id="lastName" placeholder="Last Name">
+<input id="phone" placeholder="Phone Number">
+<input id="state" placeholder="State / Region">
+
 <input id="createEmail" type="email" placeholder="Email">
 <input id="createPassword" type="password" placeholder="Password">
+
 <button onclick="register()">Create Account</button>
 <button onclick="showLogin()">Back to Login</button>
+
 <div id="createError" class="error"></div>
 </div>
 </div>
+
 
 <!-- PRODUCTS -->
 <div id="productsSection">
@@ -246,12 +255,31 @@ auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
 }
 
 function register(){
+
+const firstName=document.getElementById("firstName").value;
+const lastName=document.getElementById("lastName").value;
+const phone=document.getElementById("phone").value;
+const state=document.getElementById("state").value;
+
+if(!firstName || !lastName || !phone || !state || !createEmail.value || !createPassword.value){
+createError.innerText="Please fill all fields.";
+return;
+}
+
 auth.createUserWithEmailAndPassword(createEmail.value,createPassword.value)
+.then(userCredential=>{
+return userCredential.user.updateProfile({
+displayName:firstName+" "+lastName
+});
+})
 .catch(e=>createError.innerText=e.message);
 }
+
+
 
 function logout(){auth.signOut();}
 </script>
 
 </body>
 </html>
+
