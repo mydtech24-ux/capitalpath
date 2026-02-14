@@ -11,39 +11,33 @@
 <style>
 body{
 margin:0;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial;
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-min-height:100vh;
+color:#fff;
 }
 
-/* LOGIN CARD */
 .center{
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
 padding:20px;
 }
 
 .card{
 background:#fff;
+color:#000;
 padding:30px;
-border-radius:15px;
+border-radius:20px;
 width:100%;
 max-width:420px;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-text-align:center;
-}
-
-.card img{
-width:150px;
-margin-bottom:15px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
 input,button{
 width:100%;
 padding:14px;
-margin-top:10px;
+margin-top:12px;
 border-radius:8px;
 border:1px solid #ccc;
 }
@@ -51,79 +45,77 @@ border:1px solid #ccc;
 button{
 background:#000;
 color:#fff;
-font-weight:bold;
-border:none;
 cursor:pointer;
+border:none;
 }
-button:hover{opacity:.85;}
 
-.error{color:red;margin-top:10px;}
+button:hover{opacity:.85}
 
-/* PRODUCTS */
+.error{color:red;text-align:center;margin-top:10px}
+
 #productsSection{
 display:none;
-padding:40px 20px;
-}
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
-color:#fff;
+padding:50px 20px;
 }
 
 .logout{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px 18px;
 background:#000;
 color:#fff;
-padding:8px 15px;
 border:none;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
+z-index:999;
 }
 
 .grid{
+max-width:1200px;
+margin:auto;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
-max-width:1200px;
-margin:auto;
 }
 
 .product{
 background:#fff;
+color:#000;
 padding:20px;
-border-radius:15px;
+border-radius:20px;
 text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 .product img{
 width:100%;
-max-height:220px;
+max-height:260px;
 object-fit:contain;
+margin-bottom:15px;
 }
 
 .product a{
 display:block;
 margin-top:10px;
 padding:12px;
-background:#0f172a;
+background:#0b1c3d;
 color:#fff;
-text-decoration:none;
 border-radius:8px;
+text-decoration:none;
 }
 
-.product a:hover{opacity:.9;}
+.product a:hover{opacity:.85}
 </style>
 </head>
+
 <body>
 
 <!-- LOGIN -->
 <div id="loginSection" class="center">
 <div class="card">
-<img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
 <h2>Login to CapitalPath</h2>
-<input id="loginEmail" type="email" placeholder="Email">
+<input id="loginEmail" placeholder="Email">
 <input id="loginPassword" type="password" placeholder="Password">
 <button onclick="login()">Login</button>
 <button onclick="showCreate()">Create Account</button>
@@ -134,10 +126,9 @@ border-radius:8px;
 <!-- CREATE -->
 <div id="createSection" class="center" style="display:none;">
 <div class="card">
-<img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/logo.jpg">
 <h2>Create Account</h2>
-<input id="createEmail" type="email" placeholder="Email">
-<input id="createPassword" type="password" placeholder="Password">
+<input id="createEmail" placeholder="Email">
+<input id="createPassword" type="password" placeholder="Password (min 6)">
 <button onclick="register()">Create Account</button>
 <button onclick="showLogin()">Back to Login</button>
 <div id="createError" class="error"></div>
@@ -146,99 +137,43 @@ border-radius:8px;
 
 <!-- PRODUCTS -->
 <div id="productsSection">
-
-<div class="topbar">
-<h2>CapitalPath Resources</h2>
 <button class="logout" onclick="logout()">Logout</button>
-</div>
+
+<h2 style="text-align:center;">CapitalPath Digital & Tech Picks</h2>
 
 <div class="grid">
 
-<!-- DIGITAL BOOK -->
-<div class="product-card" style="background:#ffffff; padding:30px; border-radius:20px; max-width:500px; margin:40px auto; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
-
-  <!-- COVER IMAGE -->
-  <img src="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/cover.png"
-       alt="7-Day Digital Product Launch Guide"
-       style="width:100%; border-radius:15px; margin-bottom:25px;">
-
-  <h2 style="margin-bottom:15px;">7-Day Digital Product Launch Guide</h2>
-
-  <p style="color:#555; font-size:15px; margin-bottom:25px;">
-    A complete 11-page step-by-step blueprint to launch and sell your digital product in 7 days.
-  </p>
-
-  <!-- FREE SAMPLE -->
-  <a href="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/7-Day%20Digital%20Product%20Launch%20Guide%20%E2%80%94%20Sample%20Edition.pdf"
-     target="_blank"
-     style="display:block; padding:15px; margin-bottom:15px;
-            background:#1e293b; color:#fff; border-radius:10px;
-            text-decoration:none; font-weight:bold;">
-     Download Free Sample
-  </a>
-
-  <!-- BUY BUTTON -->
-  <a href="https://buy.stripe.com/9B600i9hP4yx9V52A66Zy01"
-     target="_blank"
-     style="display:block; padding:18px;
-            background:#16a34a; color:#fff; border-radius:10px;
-            text-decoration:none; font-weight:bold; font-size:16px;">
-     Buy Full Guide — $49
-  </a>
-
-</div>
-
-
-<!-- START WITH WHY -->
+<!-- YOUR BOOK -->
 <div class="product">
-<img src="https://m.media-amazon.com/images/I/71M1aD35XoL._SY425_.jpg">
-<h3>Start With Why — Simon Sinek</h3>
-<a href="https://amzn.to/4bqePay" target="_blank">View on Amazon</a>
+<img src="cover.jpg">
+<h3>7-Day Digital Product Launch Guide</h3>
+<a href="https://raw.githubusercontent.com/mydtech24-ux/capitalpath/main/7-Day%20Digital%20Product%20Launch%20Guide%20%E2%80%94%20Sample%20Edition.pdf" target="_blank">
+Download Free Sample
+</a>
+<a href="https://buy.stripe.com/9B600i9hP4yx9V52A66Zy01" target="_blank">
+Buy Full Guide — $49
+</a>
 </div>
 
-<!-- LAPTOP STAND -->
-<div class="product">
-<img src="https://images-na.ssl-images-amazon.com/images/I/71mNTsmd4NL._AC_UL320_.jpg">
-<h3>Adjustable Laptop Stand</h3>
-<a href="https://amzn.to/46sS6XV" target="_blank">View on Amazon</a>
-</div>
-
-<!-- SEAGATE HDD -->
-<!-- SEAGATE 2TB -->
-<div class="product">
-  <img src="https://m.media-amazon.com/images/I/91J2WH3HIPL._AC_SX679_.jpg" alt="Seagate 2TB Portable Hard Drive">
-  <h3>Seagate 2TB Portable Hard Drive</h3>
-  <a href="https://amzn.to/4tJGPN8" target="_blank">View on Amazon</a>
-</div>
-
-
-<!-- BLUE YETI -->
-<div class="product">
-<img src="https://m.media-amazon.com/images/I/61y-+k3GqZL._AC_SY355_.jpg">
-<h3>Blue Yeti USB Microphone</h3>
-<a href="https://amzn.to/4rtX7s1" target="_blank">View on Amazon</a>
-</div>
-
-<!-- LOGITECH M720 -->
-<div class="product">
-<img src="https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SY355_.jpg">
-<h3>Logitech M720 Triathlon Mouse</h3>
-<a href="https://amzn.to/4tutvfl" target="_blank">View on Amazon</a>
-</div>
-
-<!-- ECHO DOT -->
+<!-- Echo Dot -->
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/71jJawyjDFL._AC_SL1500_.jpg">
-<h3>Echo Dot (5th Gen)</h3>
+<h3>Amazon Echo Dot</h3>
 <a href="https://amzn.to/4bKwLgd" target="_blank">View on Amazon</a>
 </div>
 
-
-<!-- RING LIGHT -->
+<!-- Ring Light -->
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/61tKCv30rNL._AC_SL1500_.jpg">
-<h3>Ring Light with Tripod Stand</h3>
+<h3>Ring Light with Tripod</h3>
 <a href="https://amzn.to/4roCHjK" target="_blank">View on Amazon</a>
+</div>
+
+<!-- Seagate -->
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/91J2WH3HIPL._AC_SX679_.jpg">
+<h3>Seagate 2TB Portable Hard Drive</h3>
+<a href="https://amzn.to/4tJGPN8" target="_blank">View on Amazon</a>
 </div>
 
 </div>
@@ -249,11 +184,19 @@ const firebaseConfig={
 apiKey:"AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
 authDomain:"capitalpath-cf220.firebaseapp.com"
 };
+
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth();
 
-function showCreate(){loginSection.style.display="none";createSection.style.display="flex";}
-function showLogin(){createSection.style.display="none";loginSection.style.display="flex";}
+function showCreate(){
+loginSection.style.display="none";
+createSection.style.display="flex";
+}
+
+function showLogin(){
+createSection.style.display="none";
+loginSection.style.display="flex";
+}
 
 auth.onAuthStateChanged(user=>{
 if(user){
@@ -267,23 +210,23 @@ productsSection.style.display="none";
 });
 
 function login(){
-auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
-.catch(e=>loginError.innerText=e.message);
+auth.signInWithEmailAndPassword(
+loginEmail.value,
+loginPassword.value
+).catch(e=>loginError.innerText=e.message);
 }
 
 function register(){
-auth.createUserWithEmailAndPassword(createEmail.value,createPassword.value)
-.catch(e=>createError.innerText=e.message);
+auth.createUserWithEmailAndPassword(
+createEmail.value,
+createPassword.value
+).catch(e=>createError.innerText=e.message);
 }
 
-function logout(){auth.signOut();}
+function logout(){
+auth.signOut();
+}
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
