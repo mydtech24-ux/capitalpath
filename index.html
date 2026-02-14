@@ -223,15 +223,35 @@ Buy Full Guide — $49
 </div>
 
 <script>
+<script>
 const firebaseConfig={
 apiKey:"AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
 authDomain:"capitalpath-cf220.firebaseapp.com"
 };
+
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth();
 
-function showCreate(){loginSection.style.display="none";createSection.style.display="flex";}
-function showLogin(){createSection.style.display="none";loginSection.style.display="flex";}
+const loginSection=document.getElementById("loginSection");
+const createSection=document.getElementById("createSection");
+const productsSection=document.getElementById("productsSection");
+
+const loginEmail=document.getElementById("loginEmail");
+const loginPassword=document.getElementById("loginPassword");
+const createEmail=document.getElementById("createEmail");
+const createPassword=document.getElementById("createPassword");
+const loginError=document.getElementById("loginError");
+const createError=document.getElementById("createError");
+
+function showCreate(){
+loginSection.style.display="none";
+createSection.style.display="flex";
+}
+
+function showLogin(){
+createSection.style.display="none";
+loginSection.style.display="flex";
+}
 
 auth.onAuthStateChanged(user=>{
 if(user){
@@ -240,6 +260,7 @@ createSection.style.display="none";
 productsSection.style.display="block";
 }else{
 loginSection.style.display="flex";
+createSection.style.display="none";
 productsSection.style.display="none";
 }
 });
@@ -254,11 +275,15 @@ auth.createUserWithEmailAndPassword(createEmail.value,createPassword.value)
 .catch(e=>createError.innerText=e.message);
 }
 
-function logout(){auth.signOut();}
+function logout(){
+auth.signOut();
+}
 </script>
+
 
 </body>
 </html>
+
 
 
 
