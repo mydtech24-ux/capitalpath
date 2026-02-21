@@ -254,25 +254,27 @@ auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
 .catch(e=>loginError.innerText=e.message);
 }
 
-function register(){
+function register() {
+  const email = createEmail.value;
+  const password = createPassword.value;
 
-const firstName=document.getElementById("firstName").value;
-const lastName=document.getElementById("lastName").value;
-const phone=document.getElementById("phone").value;
-const state=document.getElementById("state").value;
+  if (!email || !password) {
+    createError.innerText = "Please enter email and password.";
+    return;
+  }
 
-if(!firstName || !lastName || !phone || !state || !createEmail.value || !createPassword.value){
-createError.innerText="Please fill all fields.";
-return;
-}
-
-auth.createUserWithEmailAndPassword(createEmail.value,createPassword.value)
-.then(userCredential=>{
-return userCredential.user.updateProfile({
-displayName:firstName+" "+lastName
-});
-})
-.catch(e=>createError.innerText=e.message);
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      // AUTO LOGIN APRÈ KREYASYON
+      return auth.signInWithEmailAndPassword(email, password);
+    })
+    .then(() => {
+      // REDIRECT DIRECTLY TO PRODUCTS
+      loginSection.style.display = "none";
+      createSection.style.display = "none";
+      productsSection.style.display = "block";
+    })
+    .catch(e => createError.innerText = e.message);
 }
 
 
@@ -282,5 +284,6 @@ function logout(){auth.signOut();}
 
 </body>
 </html>
+
 
 
