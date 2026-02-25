@@ -267,42 +267,6 @@ function register() {
     return;
   }
 
-  auth.createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-
-      const user = userCredential.user;
-
-      // ✉️ Voye email verifikasyon an
-      user.sendEmailVerification()
-        .then(() => {
-          createError.innerText = "Account created! Check your email to verify your account.";
-        });
-
-      // ✔️ Login otomatik aprè creation
-      return auth.signInWithEmailAndPassword(email, password);
-    })
-    .then(() => {
-      // ✔️ Montre seksyon pwodwi a
-      loginSection.style.display = "none";
-      createSection.style.display = "none";
-      productsSection.style.display = "block";
-    })
-    .catch(e => createError.innerText = e.message);
-}
-
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      // AUTO LOGIN APRÈ KREYASYON
-      return auth.signInWithEmailAndPassword(email, password);
-    })
-    .then(() => {
-      // REDIRECT DIRECTLY TO PRODUCTS
-      loginSection.style.display = "none";
-      createSection.style.display = "none";
-      productsSection.style.display = "block";
-    })
-    .catch(e => createError.innerText = e.message);
-}
 
 
 
@@ -311,6 +275,7 @@ function logout(){auth.signOut();}
 
 </body>
 </html>
+
 
 
 
