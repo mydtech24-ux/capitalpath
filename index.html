@@ -253,9 +253,26 @@ productsSection.style.display="none";
 }
 });
 
-function login(){
-auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
-.catch(e=>loginError.innerText=e.message);
+function login() {
+  const email = loginEmail.value;
+
+  if (!email) {
+    loginError.innerText = "Please enter your email.";
+    return;
+  }
+
+  const actionCodeSettings = {
+    url: "https://capitalpath.netlify.app",  // retounen sou sit ou apre login
+    handleCodeInApp: true
+  };
+
+  firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+    .then(() => {
+      loginError.style.color = "green";
+      loginError.innerText = "A login code has been sent to your email. Check your inbox.";
+      window.localStorage.setItem('emailForSignIn', email);
+    })
+    .catch(e => loginError.innerText = e.message);
 }
 
 function register() {
@@ -290,6 +307,7 @@ function logout(){auth.signOut();}
 
 </body>
 </html>
+
 
 
 
