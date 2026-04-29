@@ -196,6 +196,54 @@ Buy Full Guide — $49
 </div>
 </div>
 
+  <script>
+const firebaseConfig={
+apiKey:"AIzaSyC7T03RddiF1PmtjPK3AEBT6GXsGbRhyNw",
+authDomain:"capitalpath-cf220.firebaseapp.com"
+};
+firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+
+function showCreate(){loginSection.style.display="none";createSection.style.display="flex";}
+function showLogin(){createSection.style.display="none";loginSection.style.display="flex";}
+
+
+function login(){
+auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
+.catch(e=>loginError.innerText=e.message);
+}
+
+
+function register() {
+  const email = createEmail.value;
+  const password = createPassword.value;
+
+  if (!email || !password) {
+    createError.innerText = "Please enter email and password.";
+    return;
+  }
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      // AUTO LOGIN APRÈ KREYASYON
+      return auth.signInWithEmailAndPassword(email, password);
+    })
+    .then(() => {
+      // REDIRECT DIRECTLY TO PRODUCTS
+      loginSection.style.display = "none";
+      createSection.style.display = "none";
+      productsSection.style.display = "block";
+    })
+    .catch(e => createError.innerText = e.message);
+}
+
+
+
+
+
+function logout(){auth.signOut();}
+</script>
+
 
 </body>
 </html>
