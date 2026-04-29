@@ -207,6 +207,16 @@ const auth=firebase.auth();
 function showCreate(){loginSection.style.display="none";createSection.style.display="flex";}
 function showLogin(){createSection.style.display="none";loginSection.style.display="flex";}
 
+auth.onAuthStateChanged(user=>{
+if(user){
+loginSection.style.display="none";
+createSection.style.display="none";
+productsSection.style.display="block";
+}else{
+loginSection.style.display="flex";
+productsSection.style.display="none";
+}
+});
 
 function login(){
 auth.signInWithEmailAndPassword(loginEmail.value,loginPassword.value)
